@@ -1,3 +1,4 @@
+using ASP.Web.API.Practise.Middlewares;
 using BL.Services;
 using Data.Repositories;
 using Domian.Interfaces.Repositories;
@@ -28,6 +29,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.MapControllers();
 

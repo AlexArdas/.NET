@@ -1,5 +1,5 @@
 ﻿using Domian.Interfaces.Repositories;
-using Domian.Models;
+using Domian.Entities;
 
 namespace Data.Repositories
 {

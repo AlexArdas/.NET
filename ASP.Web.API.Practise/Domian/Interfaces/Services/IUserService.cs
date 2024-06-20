@@ -1,4 +1,4 @@
-﻿using Domian.Models;
+﻿using Domian.Entities;
 
 namespace Domian.Interfaces.Services
 {
@@ -6,7 +6,7 @@ namespace Domian.Interfaces.Services
     {
         User GetUser(Guid userId);
         List<User> GetUsers();
-        void CreateUser(User user);
+        void CreateUser(CreateUserModel user);
         void UpdateUser(User user);
         void AddDocumentToUser(int documentId, Guid userId);
     }

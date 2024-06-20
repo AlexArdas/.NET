@@ -1,4 +1,4 @@
-﻿using Domian.Models;
+﻿using Domian.Entities;
 
 namespace Domian.Interfaces.Repositories
 {

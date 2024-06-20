@@ -1,4 +1,4 @@
-﻿namespace ASP.Web.API.Practise.Requests
+﻿namespace Common.Requests.UserRquests
 {
     public class AddDocumentToUserRequest
     {

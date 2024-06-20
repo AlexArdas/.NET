@@ -1,5 +1,5 @@
 ﻿using Domian.Interfaces.Services;
-using Domian.Models;
+using Domian.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ASP.Web.API.Practise.Controllers
@@ -16,6 +16,7 @@ namespace ASP.Web.API.Practise.Controllers
 
         [HttpPost("document")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult CreateDocument([FromBody] Document document)
         {
             _documentService.CreateDocument(document);
@@ -24,6 +25,7 @@ namespace ASP.Web.API.Practise.Controllers
 
         [HttpPut("document")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult UpdateDocument([FromBody] Document document)
         {
             _documentService.UpdateDocument(document);
@@ -32,6 +34,7 @@ namespace ASP.Web.API.Practise.Controllers
 
         [HttpGet("document")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult GetDocument([FromQuery] int documentId)
         {
             var document = _documentService.GetDocument(documentId);
@@ -40,6 +43,7 @@ namespace ASP.Web.API.Practise.Controllers
 
         [HttpGet("documents")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult GetDocuments()
         {
             var documents = _documentService.GetDocuments();
@@ -48,6 +52,7 @@ namespace ASP.Web.API.Practise.Controllers
 
         [HttpGet("document/{documentId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult GetDocumentFromRoute([FromRoute] int documentId)
         {
             var document = _documentService.GetDocument(documentId);

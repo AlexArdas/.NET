@@ -1,4 +1,4 @@
-﻿namespace Domian.Models
+﻿namespace Domian.Entities
 {
     public class Document
     {

@@ -3,22 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33502.453
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP.Web.API.Practise", "ASP.Web.API.Practise\ASP.Web.API.Practise.csproj", "{B29E4F2D-402D-4AAC-881B-922699C4AC98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ASP.Web.API.Practise", "ASP.Web.API.Practise\ASP.Web.API.Practise.csproj", "{B29E4F2D-402D-4AAC-881B-922699C4AC98}"
 	ProjectSection(ProjectDependencies) = postProject
 		{B0F05CB9-1928-4878-9A3A-C34352791356} = {B0F05CB9-1928-4878-9A3A-C34352791356}
+		{FFF238A3-885B-4D26-BC57-07E565B21F43} = {FFF238A3-885B-4D26-BC57-07E565B21F43}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domian", "Domian\Domian.csproj", "{A8EC775B-0363-405D-8123-5A17621581B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domian\Domain.csproj", "{A8EC775B-0363-405D-8123-5A17621581B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{B0F05CB9-1928-4878-9A3A-C34352791356}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BL", "BL\BL.csproj", "{B0F05CB9-1928-4878-9A3A-C34352791356}"
 	ProjectSection(ProjectDependencies) = postProject
 		{92DE4DA2-9ACD-4928-8BDB-A4F0FE11C355} = {92DE4DA2-9ACD-4928-8BDB-A4F0FE11C355}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{92DE4DA2-9ACD-4928-8BDB-A4F0FE11C355}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{92DE4DA2-9ACD-4928-8BDB-A4F0FE11C355}"
 	ProjectSection(ProjectDependencies) = postProject
 		{A8EC775B-0363-405D-8123-5A17621581B9} = {A8EC775B-0363-405D-8123-5A17621581B9}
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{FFF238A3-885B-4D26-BC57-07E565B21F43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +45,10 @@ Global
 		{92DE4DA2-9ACD-4928-8BDB-A4F0FE11C355}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92DE4DA2-9ACD-4928-8BDB-A4F0FE11C355}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92DE4DA2-9ACD-4928-8BDB-A4F0FE11C355}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFF238A3-885B-4D26-BC57-07E565B21F43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFF238A3-885B-4D26-BC57-07E565B21F43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFF238A3-885B-4D26-BC57-07E565B21F43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFF238A3-885B-4D26-BC57-07E565B21F43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

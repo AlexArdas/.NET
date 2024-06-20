@@ -1,6 +1,6 @@
 ﻿using Domian.Interfaces.Repositories;
 using Domian.Interfaces.Services;
-using Domian.Models;
+using Domian.Entities;
 
 namespace BL.Services
 {

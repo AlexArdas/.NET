@@ -1,6 +1,7 @@
-﻿using Domian.Interfaces.Repositories;
+﻿using Domain.Exceptions;
+using Domian.Interfaces.Repositories;
 using Domian.Interfaces.Services;
-using Domian.Models;
+using Domian.Entities;
 
 namespace BL.Services
 {
@@ -20,12 +21,12 @@ namespace BL.Services
         {
             if (!_documentRepository.DoesDocumentExists(documentId))
             {
-                throw new ArgumentException("Документ не существует");
+                throw new NotFoundException("Документ не существует");
             }
 
             if (!_userRepository.DoesUserExists(userId))
             {
-                throw new ArgumentNullException("User не существует");
+                throw new NotFoundException("User не существует");
             }
 
             var document = _documentRepository.GetDocument(documentId);
