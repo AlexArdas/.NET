@@ -1,5 +1,6 @@
-﻿using Domian.Interfaces.Repositories;
-using Domian.Entities;
+﻿using Common.Responses.UserResponses;
+using Domain.Entities;
+using Domain.Interfaces.Repositories;
 
 namespace Data.Repositories
 {
@@ -13,13 +14,24 @@ namespace Data.Repositories
             new User { Id = Guid.NewGuid(), Email = "test4@mail.ru", Name = "Dima", Password = "test4"},
         };
 
-        public User GetUser(Guid userId)
+        public GetUserResponse GetUser(Guid userId)
         {
-            return Users.FirstOrDefault(u => u.Id == userId);
+            var user = Users.FirstOrDefault(u => u.Id == userId);
+            return new GetUserResponse
+            {
+                Id = user.Id,
+                Email = user.Email,
+                Name = user.Name,
+            };
         }
-        public List<User> GetUsers()
+        public IEnumerable<GetUserResponse> GetUsers()
         {
-            return Users;
+            return Users.Select(u => new GetUserResponse
+            {
+                Id = u.Id,
+                Email = u.Email,
+                Name = u.Name,
+            });
         }
 
         public void CreateUser(User user)
@@ -35,7 +47,6 @@ namespace Data.Repositories
             {
                 userDb.Email = user.Email;
                 userDb.Name = user.Name;
-                userDb.Password = user.Password;
             }
 
             Users.Remove(user);
@@ -52,7 +63,13 @@ namespace Data.Repositories
 
         public bool DoesUserExists(Guid userId)
         {
-            return Users.Any(u=> u.Id == userId);
+            return Users.Any(u => u.Id == userId);
         }
+
+        public bool DoesUserExistsWithThisEmail(string email)
+        {
+            return Users.Any(u => u.Email == email);
+        }
+
     }
 }

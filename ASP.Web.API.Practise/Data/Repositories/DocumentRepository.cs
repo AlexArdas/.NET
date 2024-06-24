@@ -1,5 +1,6 @@
-﻿using Domian.Interfaces.Repositories;
-using Domian.Entities;
+﻿using Common.Responses.DocumentRespons;
+using Domain.Entities;
+using Domain.Interfaces.Repositories;
 
 namespace Data.Repositories
 {
@@ -13,13 +14,30 @@ namespace Data.Repositories
             new Document { Id = 4, Name = "Документ4", UserId = null},
         };
 
+        public GetDocumentResponse GetDocumentResponse(int documentId)
+        {
+            var document = Documents.FirstOrDefault(d => d.Id == documentId);
+
+            return new GetDocumentResponse
+            {
+                Id = document.Id,
+                Name = document.Name,
+                UserId = document.UserId,
+            };
+        }
+        public IEnumerable<GetDocumentResponse> GetDocuments()
+        {
+            return Documents.Select(d => new GetDocumentResponse
+            {
+                Id = d.Id,
+                Name = d.Name,
+                UserId = d.UserId,
+            });
+        }
+
         public Document GetDocument(int documentId)
         {
             return Documents.FirstOrDefault(d => d.Id == documentId);
-        }
-        public List<Document> GetDocuments()
-        {
-            return Documents;
         }
 
         public void CreateDocument(Document document)

@@ -1,13 +1,15 @@
-﻿using Domian.Entities;
+﻿using Common.Responses.DocumentRespons;
+using Domain.Entities;
 
-namespace Domian.Interfaces.Repositories
+namespace Domain.Interfaces.Repositories
 {
     public interface IDocumentRepository
     {
-        Document GetDocument(int documentId);
-        List<Document> GetDocuments();
+        GetDocumentResponse GetDocumentResponse(int documentId);
+        IEnumerable<GetDocumentResponse> GetDocuments();
         void CreateDocument(Document document);
         void UpdateDocument(Document document);
         bool DoesDocumentExists(int documentId);
+        Document GetDocument(int documentId);
     }
 }

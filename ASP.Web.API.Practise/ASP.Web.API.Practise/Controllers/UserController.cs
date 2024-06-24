@@ -1,6 +1,5 @@
 ﻿using Common.Requests.UserRquests;
-using Domian.Entities;
-using Domian.Interfaces.Services;
+using Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ASP.Web.API.Practise.Controllers
@@ -27,15 +26,11 @@ namespace ASP.Web.API.Practise.Controllers
 
         [HttpPost("user")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public IActionResult CreateUser([FromBody] CreateUserRequest request)
         {
-            _userService.CreateUser(new CreateUserModel
-            {
-                Name = request.Name,
-                Email = request.Email,
-                Password = request.Password
-            });
+            _userService.CreateUser(request);
 
             return Ok();
         }
@@ -43,7 +38,7 @@ namespace ASP.Web.API.Practise.Controllers
         [HttpPut("user")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult UpdateUser([FromBody] User user)
+        public IActionResult UpdateUser([FromBody] UpdateUserRequest user)
         {
             _userService.UpdateUser(user);
             return Ok();

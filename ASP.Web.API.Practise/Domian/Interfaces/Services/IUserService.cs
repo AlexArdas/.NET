@@ -1,13 +1,14 @@
-﻿using Domian.Entities;
+﻿using Common.Requests.UserRquests;
+using Common.Responses.UserResponses;
 
-namespace Domian.Interfaces.Services
+namespace Domain.Interfaces.Services
 {
     public interface IUserService
     {
-        User GetUser(Guid userId);
-        List<User> GetUsers();
-        void CreateUser(CreateUserModel user);
-        void UpdateUser(User user);
+        GetUserResponse GetUser(Guid userId);
+        IEnumerable<GetUserResponse> GetUsers();
+        void CreateUser(CreateUserRequest createUserRequest);
+        void UpdateUser(UpdateUserRequest updateUserRequest);
         void AddDocumentToUser(int documentId, Guid userId);
     }
 }

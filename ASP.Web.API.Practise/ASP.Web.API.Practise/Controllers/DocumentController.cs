@@ -1,5 +1,5 @@
-﻿using Domian.Interfaces.Services;
-using Domian.Entities;
+﻿using Common.Requests.DocumentRequest;
+using Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ASP.Web.API.Practise.Controllers
@@ -17,18 +17,18 @@ namespace ASP.Web.API.Practise.Controllers
         [HttpPost("document")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult CreateDocument([FromBody] Document document)
+        public IActionResult CreateDocument([FromBody] CreateDocumentRequest request)
         {
-            _documentService.CreateDocument(document);
+            _documentService.CreateDocument(request);
             return Ok();
         }
 
         [HttpPut("document")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult UpdateDocument([FromBody] Document document)
+        public IActionResult UpdateDocument([FromBody] UpdateDocumentRequest request)
         {
-            _documentService.UpdateDocument(document);
+            _documentService.UpdateDocument(request);
             return Ok();
         }
 

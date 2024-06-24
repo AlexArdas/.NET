@@ -1,13 +1,14 @@
-﻿using Domian.Entities;
+﻿using Common.Requests.DocumentRequest;
+using Common.Responses.DocumentRespons;
 
-namespace Domian.Interfaces.Services
+namespace Domain.Interfaces.Services
 {
     public interface IDocumentService
     {
-        Document GetDocument(int documentId);
-        List<Document> GetDocuments();
-        void CreateDocument(Document document);
-        void UpdateDocument(Document document);
+        GetDocumentResponse GetDocument(int documentId);
+        IEnumerable<GetDocumentResponse> GetDocuments();
+        void CreateDocument(CreateDocumentRequest createDocumentRequest);
+        void UpdateDocument(UpdateDocumentRequest updateDocumentRequest);
 
     }
 }

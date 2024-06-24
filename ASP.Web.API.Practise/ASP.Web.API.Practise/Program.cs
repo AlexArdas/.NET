@@ -1,8 +1,8 @@
 using ASP.Web.API.Practise.Middlewares;
 using BL.Services;
 using Data.Repositories;
-using Domian.Interfaces.Repositories;
-using Domian.Interfaces.Services;
+using Domain.Interfaces.Repositories;
+using Domain.Interfaces.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,7 +1,10 @@
-﻿using Domain.Exceptions;
-using Domian.Interfaces.Repositories;
-using Domian.Interfaces.Services;
-using Domian.Entities;
+﻿using Common.Helpers;
+using Common.Requests.UserRquests;
+using Common.Responses.UserResponses;
+using Domain.Entities;
+using Domain.Exceptions;
+using Domain.Interfaces.Repositories;
+using Domain.Interfaces.Services;
 
 namespace BL.Services
 {
@@ -26,7 +29,7 @@ namespace BL.Services
 
             if (!_userRepository.DoesUserExists(userId))
             {
-                throw new NotFoundException("User не существует");
+                throw new NotFoundException("Пользователь не существует");
             }
 
             var document = _documentRepository.GetDocument(documentId);
@@ -35,23 +38,47 @@ namespace BL.Services
             _documentRepository.UpdateDocument(document);
         }
 
-        public User GetUser(Guid userId)
+        public GetUserResponse GetUser(Guid userId)
         {
             return _userRepository.GetUser(userId);
         }
 
-        public List<User> GetUsers()
+        public IEnumerable<GetUserResponse> GetUsers()
         {
             return _userRepository.GetUsers();
         }
 
-        public void CreateUser(User user)
+        public void CreateUser(CreateUserRequest createUserRequest)
         {
+            if (!ValidationHelper.IsValidEmail(createUserRequest.Email))
+            {
+                throw new BadRequestException("Невалидный email");
+            }
+
+            if (_userRepository.DoesUserExistsWithThisEmail(createUserRequest.Email))
+            {
+                throw new BadRequestException("Пользователь с таким email уже существует");
+            }
+
+            var user = new User
+            {
+                Id = Guid.NewGuid(),
+                Name = createUserRequest.Name,
+                Email = createUserRequest.Email,
+                Password = createUserRequest.Password,
+            };
+
             _userRepository.CreateUser(user);
         }
 
-        public void UpdateUser(User user)
+        public void UpdateUser(UpdateUserRequest updateUserRequest)
         {
+            var user = new User
+            {
+                Id = updateUserRequest.Id,
+                Name = updateUserRequest.Name,
+                Email = updateUserRequest.Email,
+            };
             _userRepository.UpdateUser(user);
         }
     }

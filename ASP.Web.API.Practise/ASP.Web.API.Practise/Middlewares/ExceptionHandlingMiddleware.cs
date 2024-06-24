@@ -1,8 +1,6 @@
 ﻿using Domain.Exceptions;
-using Microsoft.AspNetCore.Mvc.TagHelpers;
 using System.Net;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace ASP.Web.API.Practise.Middlewares
 {
@@ -10,7 +8,7 @@ namespace ASP.Web.API.Practise.Middlewares
     {
         private readonly RequestDelegate _requestDelegate;
 
-        public ExceptionHandlingMiddleware(RequestDelegate requestDelegate) 
+        public ExceptionHandlingMiddleware(RequestDelegate requestDelegate)
         {
             _requestDelegate = requestDelegate;
         }
@@ -21,9 +19,13 @@ namespace ASP.Web.API.Practise.Middlewares
             {
                 await _requestDelegate(context);
             }
-            catch (NotFoundException ex) 
+            catch (NotFoundException ex)
             {
                 await HandleException(context, ex, HttpStatusCode.NotFound);
+            }
+            catch (BadRequestException ex)
+            {
+                await HandleException(context, ex, HttpStatusCode.BadRequest);
             }
             catch (Exception ex)
             {
@@ -36,10 +38,10 @@ namespace ASP.Web.API.Practise.Middlewares
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)statusCode;
 
-            return context.Response.WriteAsync(JsonSerializer.Serialize(new 
-            { 
-                errorMessage = ex.Message, 
-                sourse = ex.Source 
+            return context.Response.WriteAsync(JsonSerializer.Serialize(new
+            {
+                errorMessage = ex.Message,
+                sourse = ex.Source
             }));
         }
     }

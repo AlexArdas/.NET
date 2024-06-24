@@ -1,6 +1,8 @@
-﻿using Domian.Interfaces.Repositories;
-using Domian.Interfaces.Services;
-using Domian.Entities;
+﻿using Common.Requests.DocumentRequest;
+using Common.Responses.DocumentRespons;
+using Domain.Entities;
+using Domain.Interfaces.Repositories;
+using Domain.Interfaces.Services;
 
 namespace BL.Services
 {
@@ -13,23 +15,36 @@ namespace BL.Services
             _documentRepository = documentRepository;
         }
 
-        public Document GetDocument(int documentId)
+        public GetDocumentResponse GetDocument(int documentId)
         {
-            return _documentRepository.GetDocument(documentId);
+            return _documentRepository.GetDocumentResponse(documentId);
         }
 
-        public List<Document> GetDocuments()
+        public IEnumerable<GetDocumentResponse> GetDocuments()
         {
             return _documentRepository.GetDocuments();
         }
 
-        public void CreateDocument(Document document)
+        public void CreateDocument(CreateDocumentRequest createDocumentRequest)
         {
+            var document = new Document
+            {
+                Name = createDocumentRequest.Name,
+                UserId = createDocumentRequest.UserId
+            };
+
             _documentRepository.CreateDocument(document);
         }
 
-        public void UpdateDocument(Document document)
+        public void UpdateDocument(UpdateDocumentRequest updateDocumentRequest)
         {
+            var document = new Document
+            {
+                Id = updateDocumentRequest.Id,
+                Name = updateDocumentRequest.Name,
+                UserId = updateDocumentRequest.UserId
+            };
+
             _documentRepository.UpdateDocument(document);
         }
     }
